@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+</head>
+<body>
+<div class="overlay">
+    <div class="container">
+
+        {% if result %}
+        <!-- Show result -->
+        <div class="result-box">
+            <h2>
+                💰 Estimated Price:
+                <span>{{ result.price }} Lakh ₹</span>
+                in <strong>{{ result.location }}</strong> area
+                having <strong>{{ result.bhk }}</strong> bedrooms
+                with <strong>{{ result.bath }}</strong> attached bathrooms
+            </h2>
+
+            <form action="/" method="get">
+                <button type="submit" class="btn">🔄 Predict More</button>
+            </form>
+        </div>
+
+        {% else %}
+        <h1 class="title">🏠 House Price Prediction</h1>
+        <!-- Show form -->
+        <form method="POST" action="/predict_home_price">
+            <!-- Location -->
+            <div class="form-group">
+                <label for="location">Location</label>
+                <select id="location" name="location" required>
+                    <option value="" disabled selected>Choose Location</option>
+                    {% for loc in locations %}
+                    <option value="{{ loc }}">{{ loc }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Square Feet -->
+            <div class="form-group">
+                <label for="total_sqft">Square Feet</label>
+                <input type="number" id="total_sqft" name="total_sqft" placeholder="Enter area in sqft" required>
+            </div>
+
+            <!-- BHK -->
+            <div class="form-group">
+                <label for="bhk">BHK</label>
+                <input type="number" id="bhk" name="bhk" min="1" max="10" placeholder="Enter number of BHK" required>
+            </div>
+
+            <!-- Bathrooms -->
+            <div class="form-group">
+                <label for="bath">Bathrooms</label>
+                <input type="number" id="bath" name="bath" min="1" max="12" placeholder="Enter number of bathrooms" required>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="btn">Predict Price</button>
+        </form>
+        {% endif %}
+    </div>
+</div>
+</body>
+</html>

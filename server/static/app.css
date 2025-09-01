@@ -1,0 +1,121 @@
+/* Reset and Body */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: 100vh;
+  background-image: url('./house.png');  /* Place your image in static folder */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Overlay for better readability */
+.overlay {
+  background: rgba(0, 0, 0, 0.55);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Main container */
+/* Main container - updated for glass effect */
+.container {
+  background: rgba(255, 255, 255, 0.15);   /* semi-transparent */
+  backdrop-filter: blur(12px);             /* glass blur */
+  -webkit-backdrop-filter: blur(12px);     /* Safari support */
+  border-radius: 12px;
+  max-width: 420px;
+  width: 80%;
+  padding: 25px 35px;
+  border: 1px solid rgba(255, 255, 255, 0.3); /* subtle border */
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+
+/* Title */
+.title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+
+/* Form elements */
+.form-group {
+  margin-bottom: 10px;
+}
+
+label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+input, select {
+  width: 90%;
+  padding: 12px 14px;
+  border: 1px solid #696666;
+  border-radius: 8px;
+  outline: none;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+input:focus, select:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 6px rgba(52, 152, 219, 0.3);
+}
+
+/* Button */
+.btn {
+  display: block;        /* makes it a block element */
+  margin: 20px auto 0;   /* auto centers horizontally */
+  width: 50%;            /* keep your custom width */
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #3498db, #2ecc71);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+
+}
+.result-box {
+  text-align: center;
+  padding: 20px;
+}
+
+.result-box h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+
+.btn:hover {
+  background: linear-gradient(135deg, #2ecc71, #3498db);
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .container {
+    max-width: 80%;
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 1.6rem;
+  }
+}
